@@ -4,7 +4,14 @@
  * and open the template in the editor.
  */
 package usuarios;
-
+import Controladores.TiposangreJpaController;
+import Tablas.Tiposangre;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 /**
  *
  * @author Rosario
@@ -30,6 +37,7 @@ public class Portal extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +54,13 @@ public class Portal extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,6 +72,10 @@ public class Portal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(264, 264, 264))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jButton2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,7 +83,9 @@ public class Portal extends javax.swing.JFrame {
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jButton1)
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(jButton2)
+                .addContainerGap(247, Short.MAX_VALUE))
         );
 
         pack();
@@ -76,6 +97,28 @@ public class Portal extends javax.swing.JFrame {
         this.add(rol);
         rol.show(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        EntityManagerFactory emf=Persistence.createEntityManagerFactory("JPAusuario");
+        EntityManager em=emf.createEntityManager();
+        TiposangreJpaController ctrlSangre=new TiposangreJpaController(emf);
+        List<Tiposangre> sangre;
+        //sangre=ctrlSangre.findTiposangreEntities();
+        //sangre.
+        /*for(Tiposangre t:sangre){
+            System.out.println(t);
+        }*/
+        Query q;
+        q=em.createNamedQuery("Tiposangre.findTipoLike");
+        //'nombre' es el parametro que esta en la clase usuario ':nombre'
+        q.setParameter("tipo", "a%");
+        sangre=q.getResultList();
+        for(Tiposangre t:sangre){
+            System.out.println(t);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,6 +158,7 @@ public class Portal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
