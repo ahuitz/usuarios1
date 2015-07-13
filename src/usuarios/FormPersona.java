@@ -9,6 +9,7 @@ package usuarios;
 import Controladores.PersonaJpaController;
 import Tablas.Tiposangre;
 import Controladores.TiposangreJpaController;
+import Tablas.Persona;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -67,8 +68,6 @@ public class FormPersona extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Carné");
 
-        jTextField2.setEditable(false);
-
         jLabel3.setText("Nombre");
 
         jLabel4.setText("Apellido");
@@ -98,10 +97,25 @@ public class FormPersona extends javax.swing.JInternalFrame {
         jLabel1.setText("Estado");
 
         jRadioButton1.setText("Activo");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setText("Inactivo");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +184,7 @@ public class FormPersona extends javax.swing.JInternalFrame {
                         .addComponent(jRadioButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButton2)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -233,14 +247,14 @@ public class FormPersona extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         pack();
@@ -266,6 +280,46 @@ public class FormPersona extends javax.swing.JInternalFrame {
             System.out.println("id: "+IdSangre.getTipo());
         //}
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Persona persona=new Persona();
+        persona.setCarne(jTextField2.getText());
+        persona.setNombre(jTextField3.getText());
+        persona.setApellido(jTextField4.getText());
+        persona.setDireccion(jTextField5.getText());
+        persona.setTelefono(jTextField6.getText());
+        persona.setCelular(jTextField7.getText());
+        persona.setDpi(jTextField8.getText());
+        persona.setFechaNac(jFormattedTextField1.getText());
+        if(jComboBox1.getSelectedItem().equals("Femenino"))
+            persona.setGenero(true);
+        else
+            persona.setGenero(false);
+        if(jRadioButton1.isSelected()==true)
+            persona.setEstado(true);
+        else 
+            persona.setEstado(false);
+        
+        Prueba prueba=new Prueba();
+        prueba.insertarPersona(persona, jComboBox3.getSelectedItem().toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        if(jRadioButton2.isSelected()==true)
+            jRadioButton1.setSelected(false);
+        else
+            jRadioButton2.setSelected(true);
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        if(jRadioButton1.isSelected()==true)
+            jRadioButton2.setSelected(false);
+        else
+            jRadioButton1.setSelected(true);
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
