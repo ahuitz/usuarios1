@@ -6,6 +6,7 @@
 package usuarios;
 
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -18,6 +19,11 @@ public class FormConsultas extends javax.swing.JInternalFrame {
      */
     
     private java.util.List<Tablas.Tiposangre> tiposangresList;
+    public FormConsultas(TableModel modelo) {
+       // initComponents();
+        jTable1.setModel(modelo);
+    }
+
     public FormConsultas() {
         initComponents();
     }
