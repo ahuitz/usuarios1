@@ -24,9 +24,9 @@ public class FormConsultas extends javax.swing.JInternalFrame {
         
     }
 
-    FormConsultas(TableModel modelo) {
+/*    FormConsultas(TableModel modelo) {
      tabTsangre.setModel(modelo);   
-    }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,9 +36,13 @@ public class FormConsultas extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("PermisosUs?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        tiposangreQuery = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT t FROM Tiposangre t");
+        tiposangreList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : tiposangreQuery.getResultList();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabTsangre = new javax.swing.JTable();
 
@@ -55,17 +59,16 @@ public class FormConsultas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        tabTsangre.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tiposangreList, tabTsangre, "Tipos de Sangre");
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Id");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${tipo}"));
+        columnBinding.setColumnName("Tipo");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+
         jScrollPane2.setViewportView(tabTsangre);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -84,14 +87,20 @@ public class FormConsultas extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.persistence.EntityManager entityManager;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable tabTsangre;
+    private java.util.List<usuarios.Tiposangre> tiposangreList;
+    private javax.persistence.Query tiposangreQuery;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

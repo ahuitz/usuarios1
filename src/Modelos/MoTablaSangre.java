@@ -22,6 +22,8 @@ public class MoTablaSangre extends AbstractTableModel{
     }
     @Override
     public int getRowCount() {
+        if(tiposangre==null)
+            return  0;
         return tiposangre.size();
     }
 
@@ -32,33 +34,14 @@ public class MoTablaSangre extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Tiposangre tsangre = this.tiposangre.get(rowIndex);
+       // Tiposangre tsangre = this.tiposangre.get(rowIndex);
         switch(columnIndex){
             case 0:
-                return  tsangre.getId();
+                return  tiposangre.get(rowIndex).getId();
             case 1:
-                return tsangre.getTipo();
+                return tiposangre.get(rowIndex).getTipo();
         }
         return null;
     }
-    public String getColumnName(int i){
-        return  null;
-    }
-    
-    public boolean isCellEditable(int rowIndex, int columnIndex){
-        return  true;
-    }
-    
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex){
-        
-        switch (columnIndex)
-        {
-            case 0:
-                tiposangre.get(rowIndex).setId((int) aValue);
-                break;
-            case 1:
-                tiposangre.get(rowIndex).setTipo((String) aValue);
-                break;
-        }}
 }
 
