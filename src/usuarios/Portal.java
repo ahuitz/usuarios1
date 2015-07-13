@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package usuarios;
-import Controladores.TiposangreJpaController;
-import Tablas.Tiposangre;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaQuery;
 /**
  *
  * @author Rosario
@@ -81,11 +78,11 @@ public class Portal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(58, 58, 58)
                 .addComponent(jButton1)
                 .addGap(52, 52, 52)
                 .addComponent(jButton2)
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,30 +90,15 @@ public class Portal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Roles rol=new Roles();
+        FormPersona rol=new FormPersona();
         this.add(rol);
         rol.show(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        EntityManagerFactory emf=Persistence.createEntityManagerFactory("JPAusuario");
-        EntityManager em=emf.createEntityManager();
-        TiposangreJpaController ctrlSangre=new TiposangreJpaController(emf);
-        List<Tiposangre> sangre;
-        //sangre=ctrlSangre.findTiposangreEntities();
-        //sangre.
-        /*for(Tiposangre t:sangre){
-            System.out.println(t);
-        }*/
-        Query q;
-        q=em.createNamedQuery("Tiposangre.findTipoLike");
-        //'nombre' es el parametro que esta en la clase usuario ':nombre'
-        q.setParameter("tipo", "a%");
-        sangre=q.getResultList();
-        for(Tiposangre t:sangre){
-            System.out.println(t);
-        }
+        // TODO add your handling code here:        
+        /*AccionesPersona p=new AccionesPersona();
+        p.mostrarSangre();*/
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

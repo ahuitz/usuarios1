@@ -1,27 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="JPAusuario" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="usuariosJPA" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Tablas.Tfacultad</class>
-    <class>Tablas.Testado</class>
-    <class>Tablas.Trolusuario</class>
-    <class>Tablas.Tcarrera</class>
-    <class>Tablas.Tusuarios</class>
+    <class>clases.Persona</class>
+    <class>clases.Carreraasignacion</class>
+    <class>clases.Horario</class>
+    <class>clases.Ciclo</class>
+    <class>clases.Archivo</class>
+    <class>clases.Rolusuario</class>
+    <class>clases.Carrerausuario</class>
+    <class>clases.Usuario</class>
+    <class>clases.Tiposangre</class>
+    <class>clases.Asignado</class>
+    <class>clases.Recurso</class>
+    <class>clases.Clasehorario</class>
+    <class>clases.Seccioncurso</class>
+    <class>clases.Tipoactividad</class>
+    <class>clases.Facultad</class>
+    <class>clases.Entrega</class>
+    <class>clases.Carrera</class>
+    <class>clases.Ciclocurso</class>
+    <class>clases.Cursocarrera</class>
+    <class>clases.Cursohorario</class>
+    <class>clases.Detalleentrega</class>
+    <class>clases.Actividad</class>
+    <class>clases.Curso</class>
+    <class>clases.Tipoasignacion</class>
+    <class>clases.Detalleasignacionvip</class>
+    <class>clases.Seccion</class>
+    <class>clases.Clase</class>
+    <class>Tablas.Seccion</class>
+    <class>Tablas.Cursohorario</class>
+    <class>Tablas.Persona</class>
+    <class>Tablas.Facultad</class>
+    <class>Tablas.Recurso</class>
+    <class>Tablas.Carrerausuario</class>
+    <class>Tablas.Detalleasignacionvip</class>
+    <class>Tablas.Tipoasignacion</class>
+    <class>Tablas.Clase</class>
+    <class>Tablas.Entrega</class>
+    <class>Tablas.Cursocarrera</class>
+    <class>Tablas.Rolusuario</class>
+    <class>Tablas.Actividad</class>
+    <class>Tablas.Archivo</class>
     <class>Tablas.Tiposangre</class>
-    <class>Tablas.Tpersona</class>
-    <class>Tablas.Tpermcarrera</class>
-    <class>Tablas.Tformulario</class>
-    <class>Tablas.Tacciones</class>
-    <class>Tablas.Tgenero</class>
-    <class>Tablas.Tpermpuesto</class>
-    <class>Tablas.Tpermisos</class>
-    <class>Tablas.Tmodulo</class>
+    <class>Tablas.CursoHasCiclo</class>
+    <class>Tablas.Curso</class>
+    <class>Tablas.Detalleentrega</class>
+    <class>Tablas.Usuario</class>
+    <class>Tablas.Horario</class>
+    <class>Tablas.Carrera</class>
+    <class>Tablas.Clasehorario</class>
+    <class>Tablas.Carreraasignacion</class>
+    <class>Tablas.Seccioncurso</class>
+    <class>Tablas.Ciclocurso</class>
+    <class>Tablas.Ciclo</class>
+    <class>Tablas.Asignado</class>
+    <class>Tablas.Tipoactividad</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/permisosus?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="1234"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>
