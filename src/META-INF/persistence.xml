@@ -69,6 +69,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>usuarios.Tiposangre</class>
     <class>usuarios.Persona</class>
+    <class>usuarios.Actividad</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/PermisosUs?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
