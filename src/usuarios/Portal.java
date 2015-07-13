@@ -119,6 +119,9 @@ public class Portal extends javax.swing.JFrame {
         FormConsultas con=new FormConsultas();
         this.add(con);
         con.show(true);
+        //Consultar co = new Consultar();
+        //this.add(co);
+        //co.show(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
