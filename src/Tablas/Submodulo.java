@@ -25,12 +25,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(catalog = "permisosus", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Clase.findAll", query = "SELECT c FROM Clase c"),
-    @NamedQuery(name = "Clase.findById", query = "SELECT c FROM Clase c WHERE c.id = :id"),
-    @NamedQuery(name = "Clase.findByNumero", query = "SELECT c FROM Clase c WHERE c.numero = :numero"),
-    @NamedQuery(name = "Clase.findByCupo", query = "SELECT c FROM Clase c WHERE c.cupo = :cupo"),
-    @NamedQuery(name = "Clase.findByDisponibilidad", query = "SELECT c FROM Clase c WHERE c.disponibilidad = :disponibilidad")})
-public class Clase implements Serializable {
+    @NamedQuery(name = "Submodulo.findAll", query = "SELECT s FROM Submodulo s"),
+    @NamedQuery(name = "Submodulo.findById", query = "SELECT s FROM Submodulo s WHERE s.id = :id"),
+    @NamedQuery(name = "Submodulo.findBySubModulo", query = "SELECT s FROM Submodulo s WHERE s.subModulo = :subModulo"),
+    @NamedQuery(name = "Submodulo.findByModuloid", query = "SELECT s FROM Submodulo s WHERE s.moduloid = :moduloid"),
+    @NamedQuery(name = "Submodulo.findByPermisoid", query = "SELECT s FROM Submodulo s WHERE s.permisoid = :permisoid")})
+public class Submodulo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,27 +38,27 @@ public class Clase implements Serializable {
     @Column(nullable = false)
     private Integer id;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
-    private String numero;
+    @Column(nullable = false, length = 60)
+    private String subModulo;
     @Basic(optional = false)
-    @Column(nullable = false)
-    private int cupo;
+    @Column(name = "Modulo_id", nullable = false)
+    private int moduloid;
     @Basic(optional = false)
-    @Column(nullable = false)
-    private boolean disponibilidad;
+    @Column(name = "Permiso_id", nullable = false)
+    private int permisoid;
 
-    public Clase() {
+    public Submodulo() {
     }
 
-    public Clase(Integer id) {
+    public Submodulo(Integer id) {
         this.id = id;
     }
 
-    public Clase(Integer id, String numero, int cupo, boolean disponibilidad) {
+    public Submodulo(Integer id, String subModulo, int moduloid, int permisoid) {
         this.id = id;
-        this.numero = numero;
-        this.cupo = cupo;
-        this.disponibilidad = disponibilidad;
+        this.subModulo = subModulo;
+        this.moduloid = moduloid;
+        this.permisoid = permisoid;
     }
 
     public Integer getId() {
@@ -69,28 +69,28 @@ public class Clase implements Serializable {
         this.id = id;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getSubModulo() {
+        return subModulo;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setSubModulo(String subModulo) {
+        this.subModulo = subModulo;
     }
 
-    public int getCupo() {
-        return cupo;
+    public int getModuloid() {
+        return moduloid;
     }
 
-    public void setCupo(int cupo) {
-        this.cupo = cupo;
+    public void setModuloid(int moduloid) {
+        this.moduloid = moduloid;
     }
 
-    public boolean getDisponibilidad() {
-        return disponibilidad;
+    public int getPermisoid() {
+        return permisoid;
     }
 
-    public void setDisponibilidad(boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
+    public void setPermisoid(int permisoid) {
+        this.permisoid = permisoid;
     }
 
     @Override
@@ -103,10 +103,10 @@ public class Clase implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Clase)) {
+        if (!(object instanceof Submodulo)) {
             return false;
         }
-        Clase other = (Clase) object;
+        Submodulo other = (Submodulo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -115,7 +115,7 @@ public class Clase implements Serializable {
 
     @Override
     public String toString() {
-        return "Tablas.Clase[ id=" + id + " ]";
+        return "Tablas.Submodulo[ id=" + id + " ]";
     }
     
 }

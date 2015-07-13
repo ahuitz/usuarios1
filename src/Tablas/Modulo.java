@@ -25,11 +25,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(catalog = "permisosus", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h"),
-    @NamedQuery(name = "Horario.findById", query = "SELECT h FROM Horario h WHERE h.id = :id"),
-    @NamedQuery(name = "Horario.findByDia", query = "SELECT h FROM Horario h WHERE h.dia = :dia"),
-    @NamedQuery(name = "Horario.findByHora", query = "SELECT h FROM Horario h WHERE h.hora = :hora")})
-public class Horario implements Serializable {
+    @NamedQuery(name = "Modulo.findAll", query = "SELECT m FROM Modulo m"),
+    @NamedQuery(name = "Modulo.findById", query = "SELECT m FROM Modulo m WHERE m.id = :id"),
+    @NamedQuery(name = "Modulo.findByNombreModulo", query = "SELECT m FROM Modulo m WHERE m.nombreModulo = :nombreModulo")})
+public class Modulo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,22 +37,18 @@ public class Horario implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
-    private String dia;
-    @Basic(optional = false)
-    @Column(nullable = false, length = 45)
-    private String hora;
+    private String nombreModulo;
 
-    public Horario() {
+    public Modulo() {
     }
 
-    public Horario(Integer id) {
+    public Modulo(Integer id) {
         this.id = id;
     }
 
-    public Horario(Integer id, String dia, String hora) {
+    public Modulo(Integer id, String nombreModulo) {
         this.id = id;
-        this.dia = dia;
-        this.hora = hora;
+        this.nombreModulo = nombreModulo;
     }
 
     public Integer getId() {
@@ -64,20 +59,12 @@ public class Horario implements Serializable {
         this.id = id;
     }
 
-    public String getDia() {
-        return dia;
+    public String getNombreModulo() {
+        return nombreModulo;
     }
 
-    public void setDia(String dia) {
-        this.dia = dia;
-    }
-
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setNombreModulo(String nombreModulo) {
+        this.nombreModulo = nombreModulo;
     }
 
     @Override
@@ -90,10 +77,10 @@ public class Horario implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Horario)) {
+        if (!(object instanceof Modulo)) {
             return false;
         }
-        Horario other = (Horario) object;
+        Modulo other = (Modulo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -102,7 +89,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "Tablas.Horario[ id=" + id + " ]";
+        return "Tablas.Modulo[ id=" + id + " ]";
     }
     
 }

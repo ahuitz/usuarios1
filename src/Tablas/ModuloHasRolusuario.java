@@ -22,13 +22,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Rosario
  */
 @Entity
-@Table(catalog = "permisosus", schema = "")
+@Table(name = "modulo_has_rolusuario", catalog = "permisosus", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Carreraasignacion.findAll", query = "SELECT c FROM Carreraasignacion c"),
-    @NamedQuery(name = "Carreraasignacion.findById", query = "SELECT c FROM Carreraasignacion c WHERE c.id = :id"),
-    @NamedQuery(name = "Carreraasignacion.findByCarreraid", query = "SELECT c FROM Carreraasignacion c WHERE c.carreraid = :carreraid")})
-public class Carreraasignacion implements Serializable {
+    @NamedQuery(name = "ModuloHasRolusuario.findAll", query = "SELECT m FROM ModuloHasRolusuario m"),
+    @NamedQuery(name = "ModuloHasRolusuario.findById", query = "SELECT m FROM ModuloHasRolusuario m WHERE m.id = :id"),
+    @NamedQuery(name = "ModuloHasRolusuario.findByRolUsuarioid", query = "SELECT m FROM ModuloHasRolusuario m WHERE m.rolUsuarioid = :rolUsuarioid"),
+    @NamedQuery(name = "ModuloHasRolusuario.findByModuloid", query = "SELECT m FROM ModuloHasRolusuario m WHERE m.moduloid = :moduloid")})
+public class ModuloHasRolusuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,19 +37,23 @@ public class Carreraasignacion implements Serializable {
     @Column(nullable = false)
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "Carrera_id", nullable = false)
-    private int carreraid;
+    @Column(name = "RolUsuario_id", nullable = false)
+    private int rolUsuarioid;
+    @Basic(optional = false)
+    @Column(name = "Modulo_id", nullable = false)
+    private int moduloid;
 
-    public Carreraasignacion() {
+    public ModuloHasRolusuario() {
     }
 
-    public Carreraasignacion(Integer id) {
+    public ModuloHasRolusuario(Integer id) {
         this.id = id;
     }
 
-    public Carreraasignacion(Integer id, int carreraid) {
+    public ModuloHasRolusuario(Integer id, int rolUsuarioid, int moduloid) {
         this.id = id;
-        this.carreraid = carreraid;
+        this.rolUsuarioid = rolUsuarioid;
+        this.moduloid = moduloid;
     }
 
     public Integer getId() {
@@ -59,12 +64,20 @@ public class Carreraasignacion implements Serializable {
         this.id = id;
     }
 
-    public int getCarreraid() {
-        return carreraid;
+    public int getRolUsuarioid() {
+        return rolUsuarioid;
     }
 
-    public void setCarreraid(int carreraid) {
-        this.carreraid = carreraid;
+    public void setRolUsuarioid(int rolUsuarioid) {
+        this.rolUsuarioid = rolUsuarioid;
+    }
+
+    public int getModuloid() {
+        return moduloid;
+    }
+
+    public void setModuloid(int moduloid) {
+        this.moduloid = moduloid;
     }
 
     @Override
@@ -77,10 +90,10 @@ public class Carreraasignacion implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Carreraasignacion)) {
+        if (!(object instanceof ModuloHasRolusuario)) {
             return false;
         }
-        Carreraasignacion other = (Carreraasignacion) object;
+        ModuloHasRolusuario other = (ModuloHasRolusuario) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -89,7 +102,7 @@ public class Carreraasignacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Tablas.Carreraasignacion[ id=" + id + " ]";
+        return "Tablas.ModuloHasRolusuario[ id=" + id + " ]";
     }
     
 }
