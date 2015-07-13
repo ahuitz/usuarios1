@@ -102,6 +102,11 @@ public class FormPersona extends javax.swing.JInternalFrame {
         jRadioButton2.setText("Inactivo");
 
         jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Modificar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -258,14 +263,22 @@ public class FormPersona extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        //AccionesPersona persona = null;
+        // TODO add your handling code here:        
         TiposangreJpaController tipo=new TiposangreJpaController(Conexion.getIntance());
-        Tiposangre IdSangre= tipo.findTiposangre(2);
-        //for(Tiposangre s: IdSangre){
-            System.out.println("id: "+IdSangre.getTipo());
-        //}
+        List<Tiposangre> IdSangre= tipo.findTiposangreEntities();
+        for(Tiposangre t:IdSangre){
+            if("O+".equals(t.getTipo())){
+                System.out.println("VALOR ENCONTRADO"+ t.getId());
+            }else{
+                //System.out.println("ERROR");
+            }
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
