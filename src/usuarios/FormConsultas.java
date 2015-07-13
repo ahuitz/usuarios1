@@ -5,6 +5,7 @@
  */
 package usuarios;
 
+import Modelos.MoTablaSangre;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
@@ -18,15 +19,17 @@ public class FormConsultas extends javax.swing.JInternalFrame {
      * Creates new form FormConsultas
      */
     
-    private java.util.List<Tablas.Tiposangre> tiposangresList;
-    public FormConsultas(TableModel modelo) {
-       // initComponents();
-        jTable1.setModel(modelo);
-    }
+    MoTablaSangre tableSangre;
+       
 
     public FormConsultas() {
         initComponents();
+        this.tableSangre = new MoTablaSangre();
+        this.jtblTsange.setModel(tableSangre);
+        
     }
+
+   
 
     
     
@@ -42,9 +45,9 @@ public class FormConsultas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtblTsange = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtblTsange.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,14 +58,14 @@ public class FormConsultas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtblTsange);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(243, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -79,6 +82,6 @@ public class FormConsultas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtblTsange;
     // End of variables declaration//GEN-END:variables
 }

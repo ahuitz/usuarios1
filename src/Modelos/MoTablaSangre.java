@@ -8,40 +8,50 @@ package Modelos;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Tablas.Tiposangre;
+import java.util.ArrayList;
 /**
  *
  * @author Cliente
  */
 public class MoTablaSangre extends AbstractTableModel{
 
-    private List <Tiposangre> tiposangre;
-    private String columnas[] = {"ID","Tipo"};
+    private  ArrayList<Tiposangre> ListTipoSangre;
+    private  String[] columna = {"ID","Tipo Sangre"};
     
-    public MoTablaSangre(List<Tiposangre> tiposangre){
-        this.tiposangre = tiposangre;
+    public Tiposangre getTiposangre(int rowIndex){
+        return  this.ListTipoSangre.get(rowIndex);
     }
     @Override
     public int getRowCount() {
-        if(tiposangre==null)
-            return  0;
-        return tiposangre.size();
+        return this.ListTipoSangre.size();
     }
 
     @Override
     public int getColumnCount() {
-        return  columnas.length;
+        return  columna.length;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-       // Tiposangre tsangre = this.tiposangre.get(rowIndex);
         switch(columnIndex){
-            case 0:
-                return  tiposangre.get(rowIndex).getId();
+            case 0: 
+                return this.ListTipoSangre.get(rowIndex).getId();
+                
             case 1:
-                return tiposangre.get(rowIndex).getTipo();
+                return  this.ListTipoSangre.get(rowIndex).getTipo();
+            
+            default:
+              return this.ListTipoSangre.get(rowIndex);
         }
-        return null;
+    }
+
+    public MoTablaSangre() {
+        this.ListTipoSangre = new ArrayList<>();
+    }
+
+    @Override
+    public  String getColumnName(int columnIndex){
+        return  this.columna[columnIndex];
     }
 }
 
